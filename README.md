@@ -42,9 +42,5 @@ MYSQL_PASSWORD=password  # 一般ユーザーのパスワード
 docker-compose up -d
 ```
 
-<br>
-
-### 5. コンテナを削除する
-
 以下URLにアクセスして、DBの内容が取得できれば成功です。
 - http://localhost:8080/index.php
