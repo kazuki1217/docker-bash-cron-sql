@@ -14,21 +14,43 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // SQLを実行
-    $stmt = $pdo->query("SELECT * FROM products");
+    $sql = "
+        SELECT
+            p.id,
+            p.name,
+            p.price,
+            p.stock,
+            c.name AS category_name
+        FROM products p
+        LEFT JOIN categories c ON p.category_id = c.id
+    ";
 
-    // 取得結果をすべて配列に格納
+    $stmt = $pdo->query($sql);
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo "<h1>Products</h1>";
-    echo "<ul>";
+    echo "<table border='1' cellspacing='0' cellpadding='5'>";
+    echo "<tr>
+            <th>ID</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>在庫</th>
+            <th>カテゴリ</th>
+          </tr>";
 
-    // 配列の中身を 1件ずつ取り出して表示
     foreach ($products as $row) {
-        echo "<li>{$row['id']}: {$row['name']} - ¥{$row['price']}</li>";
+        $category = $row['category_name'] ?? '未分類';
+        echo "<tr>
+                <td>{$row['id']}</td>
+                <td>{$row['name']}</td>
+                <td>¥{$row['price']}</td>
+                <td>{$row['stock']}</td>
+                <td>{$category}</td>
+              </tr>";
     }
-    echo "</ul>";
 
-    exit;
+    echo "</table>";
+
 } catch (PDOException $e) {
     echo "Retrying DB connection...<br>";
     echo $e->getMessage();
