@@ -1,0 +1,4 @@
+name,price,stock,category_id,discontinued
+Banana,55.00,30,1,0
+Orange,80.00,30,1,0
+Broccoli,60.00,1,2,0
