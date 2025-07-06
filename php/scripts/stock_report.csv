@@ -1,0 +1,7 @@
+id,name,price,stock,category_name,created_at,updated_at,discontinued,discontinued_at
+1,Apple,100.00,10,Fruits,2025-07-06 14:28:58,2025-07-06 14:28:58,-,-
+2,Banana,55.00,648,Fruits,2025-07-06 14:28:58,2025-07-06 16:23:40,-,-
+3,Carrot,30.00,50,Vegetables,2025-07-06 14:28:58,2025-07-06 14:28:58,-,-
+12,Orange,80.00,480,Fruits,2025-07-06 14:43:17,2025-07-06 16:23:16,-,-
+13,Broccoli,60.00,2,Vegetables,2025-07-06 14:43:17,2025-07-06 16:23:40,-,-
+22,aaeai,60.00,0,Vegetables,2025-07-06 14:44:36,2025-07-06 14:44:36,-,-
