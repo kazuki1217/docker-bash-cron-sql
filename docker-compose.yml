@@ -20,6 +20,8 @@ services:
     volumes:
       - ./php/html:/var/www/html # php ファイルを記述する場所
       - ./php/scripts:/scripts # bash ファイルを記述する場所
+      - ./php/crontab:/etc/cron.d/my-cron # cron の設定ファイルを配置
+      - ./php/.env:/etc/.env # cron が使う環境変数を配置
     environment:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
