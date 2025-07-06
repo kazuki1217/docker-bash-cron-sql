@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# /etc/.env の中に書いてある設定を読み込む
+set -a
+. /etc/.env
+set +a
+
 # 入庫情報CSVファイルのパス
 CSV_FILE="/scripts/stock_in.csv"
 

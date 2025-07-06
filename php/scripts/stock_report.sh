@@ -1,5 +1,9 @@
 #!/bin/bash
-set -e
+
+# /etc/.env の中に書いてある設定を読み込む
+set -a
+. /etc/.env 
+set +a
 
 # 在庫状況CSVのパス
 REPORT_FILE="/scripts/stock_report.csv"

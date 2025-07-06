@@ -5,16 +5,15 @@
 # ps aux | grep cron
 # cat /var/log/cron.log
 
-
+# 動作確認用
 * * * * * root echo "cron is working!" >> /var/log/cron.log
 
-# 【env の環境変数がうまく読み込めない状況】
-# 毎朝9時、入庫情報をDBに反映
-# 0 9 * * * root . /etc/container_env && /scripts/stock_in_import.sh >> /var/log/cron.log 2>&1
+# 毎分、入庫情報をDBに反映
+* * * * * root . /etc/.env && /scripts/stock_in_import.sh >> /var/log/cron.log 2>&1
 
-# 毎夜10時、出庫情報をDBに反映
-# 0 22 * * * root . /etc/container_env && /scripts/stock_out_update.sh >> /var/log/cron.log 2>&1
+# 毎分、出庫情報をDBに反映
+* * * * * root sleep 5 && . /etc/.env && /scripts/stock_out_update.sh >> /var/log/cron.log 2>&1
 
-# 毎夜11時、在庫状況をCSVファイルに出力
-# 0 23 * * * root . /etc/container_env && /scripts/stock_report.sh >> /var/log/cron.log 2>&1
+# 毎分、在庫状況をCSVファイルに出力
+* * * * * root sleep 10 && . /etc/.env && /scripts/stock_report.sh >> /var/log/cron.log 2>&1
 
