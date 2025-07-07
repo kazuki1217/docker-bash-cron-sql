@@ -1,10 +1,21 @@
 ## 何をしているのか
 
-商品の在庫状況を分単位で自動更新される機能を実装しました。
+商品の在庫状況を分単位で自動更新する機能を実装しました。
 
 php/scripts/stock_in.csv ファイルに入庫した商品の情報が入り、php/scripts/stock_out.csv ファイルに出庫した商品の情報が入ることを想定し、それらの情報をDBに自動で反映する機能を実装しました。在庫状況を確認する方法は2種類で、ブラウザからの確認と、 php/scripts/stock_report.csv ファイルからの確認が可能です。
 
-<br><br>
+<details>
+<summary>使用技術</summary>
+
+- Nginx
+- PHP
+- Bash
+- MySQL
+- phpMyAdmin
+
+</details>
+
+<br>
 
 ## 環境構築の手順書
 
@@ -26,6 +37,8 @@ php/scripts/stock_in.csv ファイルに入庫した商品の情報が入り、p
 sudo chown -R $USER:$USER .
 chmod -R 744 .
 ```
+
+<br>
 
 ### 2. ログファイルを作成する
 
