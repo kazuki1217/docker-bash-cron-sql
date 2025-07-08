@@ -115,6 +115,8 @@ docker compose exec php /scripts/stock_report.sh
 ```
 cron を起動するコマンド
 ```
+docker compose exec php chown root:root /etc/cron.d/my-cron
+docker compose exec php chmod 0644 /etc/cron.d/my-cron
 docker compose exec php service cron start
 ```
 cron で実行ログを表示するコマンド
