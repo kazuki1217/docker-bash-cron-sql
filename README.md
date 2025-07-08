@@ -7,7 +7,6 @@ php/scripts/stock_in.csv ファイルに入庫した商品の情報が入り、p
 <details>
 <summary>使用技術</summary>
 
-- Nginx
 - PHP
 - Bash
 - MySQL

@@ -1,22 +1,11 @@
 version: '3.8'
 
 services:
-
-  # Webサーバ
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "8080:80"
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf # 設定ファイル
-      - ./nginx/logs/access.log:/var/log/nginx/access.log # アクセスログ
-      - ./nginx/logs/error.log:/var/log/nginx/error.log # エラーログ
-    depends_on:
-      - mysql
-
   # アプリサーバ
   php:
     build: ./php
+    ports:
+      - "8080:8080"
     volumes:
       - ./php/html:/var/www/html # php ファイルを記述する場所
       - ./php/scripts:/scripts # bash ファイルを記述する場所
@@ -26,10 +15,11 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
+    command: php -S 0.0.0.0:8080 -t /var/www/html # PHP組み込みWebサーバを起動
 
   # データベース
   mysql:
-    image: mysql:8.0
+    build: ./mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -38,8 +28,6 @@ services:
       TZ: Asia/Tokyo
     ports:
       - "3306:3306"
-    volumes:
-      - ./mysql:/docker-entrypoint-initdb.d # sql ファイルや bash ファイル等を記述する場所（コンテナ起動時に自動実行される）
 
   # データベースを GUI で操作するツール
   phpmyadmin:
