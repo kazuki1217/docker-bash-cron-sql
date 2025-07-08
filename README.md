@@ -44,48 +44,21 @@ php/scripts/stock_in.csv ファイルに入庫した商品の情報が入り、p
 
 <br>
 
-### 1. プロジェクトの所有者を自分に変更
 
-以下のコマンドを実行し、所有者を自分に変更します。
+### 1. `.env` ファイルを作成する
 
-```
-sudo chown -R $USER:$USER .
-chmod -R 744 .
-```
-
-<br>
-
-### 2. ログファイルを作成する
-
-以下のコマンドを実行し、`./nginx/logs/access.log` と `./nginx/logs/error.log` の2つのログファイルを作成します。
-
-```bash
-mkdir -p ./nginx/logs
-touch ./nginx/logs/access.log
-touch ./nginx/logs/error.log
-```
-
-<br>
-
-### 3. `.env` ファイルを作成する
-
-以下のコマンドを実行し、プロジェクト直下と ./php/ 配下に `.env` ファイルを設定します。
+以下のコマンドを実行し、プロジェクト直下に `.env` ファイルを設定します。
 
 ```bash
 echo "MYSQL_ROOT_PASSWORD=supersecretpassword
 MYSQL_DATABASE=shopdb
 MYSQL_USER=user
 MYSQL_PASSWORD=password" > .env
-
-echo "MYSQL_ROOT_PASSWORD=supersecretpassword
-MYSQL_DATABASE=shopdb
-MYSQL_USER=user
-MYSQL_PASSWORD=password" > ./php/.env
 ```
 
 <br>
  
-### 4. コンテナを起動する
+### 2. コンテナを起動する
 
 以下のコマンドを実行して、コンテナを起動します。
 

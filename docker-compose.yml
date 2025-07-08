@@ -10,7 +10,7 @@ services:
       - ./php/html:/var/www/html # php ファイルを記述する場所
       - ./php/scripts:/scripts # bash ファイルを記述する場所
       - ./php/crontab:/etc/cron.d/my-cron # cron の設定ファイルを配置
-      - ./php/.env:/etc/.env # cron が使う環境変数を配置
+      - ./.env:/etc/.env # cron が使う環境変数を配置
     environment:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
@@ -19,7 +19,7 @@ services:
 
   # データベース
   mysql:
-    build: ./mysql
+    image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -28,6 +28,8 @@ services:
       TZ: Asia/Tokyo
     ports:
       - "3306:3306"
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql # DBを初期化するSQL文を配置
 
   # データベースを GUI で操作するツール
   phpmyadmin:
