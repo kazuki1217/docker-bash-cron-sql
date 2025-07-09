@@ -8,6 +8,8 @@ set +a
 # logger.sh を読み込む
 . /scripts/logger.sh
 
+log INFO "============================================================"
+
 # 入庫情報CSVファイルのパス
 CSV_FILE="/scripts/stock_in.csv"
 
@@ -31,7 +33,7 @@ do
     fi
 
     # 仕入れた商品情報を登録（name が既に存在する場合は更新し、在庫は加算）
-    mysql -h mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -e "
+    mysql --default-character-set=utf8mb4 -h mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -e "
         INSERT INTO products (name, price, stock, category_id, discontinued, discontinued_at)
         VALUES (
             '$name',

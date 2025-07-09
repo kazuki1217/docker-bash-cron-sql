@@ -8,6 +8,8 @@ set +a
 # logger.sh を読み込む
 . /scripts/logger.sh
 
+log INFO "============================================================"
+
 # 在庫状況CSVのパス
 REPORT_FILE="/scripts/stock_report.csv"
 
@@ -15,7 +17,7 @@ REPORT_FILE="/scripts/stock_report.csv"
 echo "id,name,price,stock,category_name,created_at,updated_at,discontinued,discontinued_at" > $REPORT_FILE
 
 # データ追記
-mysql -h mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -B -N -e "
+mysql --default-character-set=utf8mb4 -h mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -B -N -e "
     SELECT
         CONCAT_WS(',',
             p.id,

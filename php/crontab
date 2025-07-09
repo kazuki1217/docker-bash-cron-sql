@@ -12,11 +12,11 @@ TZ=Asia/Tokyo
 * * * * * root echo "cron is working!" >> /var/log/cron.log
 
 # 毎分、入庫情報をDBに反映
-* * * * * root /scripts/stock_in_import.sh >> /var/log/cron.log 2>&1
+* * * * * root sleep 3 && /scripts/stock_in_import.sh >> /var/log/cron.log 2>&1
 
 # 毎分、出庫情報をDBに反映
-* * * * * root sleep 5 && /scripts/stock_out_update.sh >> /var/log/cron.log 2>&1
+* * * * * root sleep 6 && /scripts/stock_out_update.sh >> /var/log/cron.log 2>&1
 
 # 毎分、在庫状況をCSVファイルに出力
-* * * * * root sleep 10 && /scripts/stock_report.sh >> /var/log/cron.log 2>&1
+* * * * * root sleep 9 && /scripts/stock_report.sh >> /var/log/cron.log 2>&1
 

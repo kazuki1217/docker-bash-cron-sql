@@ -1,3 +1,6 @@
+-- 文字コード設定
+SET NAMES utf8mb4;
+
 -- テーブル名「categories」を作成（すでに同じ名前のテーブルが存在する場合は作らない）
 CREATE TABLE IF NOT EXISTS categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -5,7 +8,7 @@ CREATE TABLE IF NOT EXISTS categories (
 );
 
 -- サンプルデータを追加
-INSERT INTO categories (name) VALUES ('Fruits'), ('Vegetables');
+INSERT INTO categories (name) VALUES ('肉'), ('野菜'), ('果物'), ('日用品');
 
 
 -- テーブル名「products」を作成（すでに同じ名前のテーブルが存在する場合は作らない）
@@ -25,6 +28,20 @@ CREATE TABLE IF NOT EXISTS products (
 -- サンプルデータを追加
 INSERT INTO products (name, price, stock, category_id, discontinued)
 VALUES
-    ('Apple', 100.00, 10, 1, 0),
-    ('Banana', 50.00, 20, 1, 0),
-    ('Carrot', 30.00, 50, 2, 1);
+    -- 肉
+    ('豚バラ肉（100g）', 198.00, 100, 1, 0),
+    ('鶏もも肉（100g）', 128.00, 150, 1, 0),
+
+
+    -- 野菜
+    ('トマト', 98.00, 300, 2, 0),
+    ('キャベツ', 150.00, 200, 2, 0),
+
+    -- 果物
+    ('りんご', 120.00, 250, 3, 0),
+    ('バナナ', 98.00, 300, 3, 1),
+
+    
+    -- 日常品
+    ('トイレットペーパー', 398.00, 100, 4, 0),
+    ('洗濯洗剤', 298.00, 200, 4, 1)

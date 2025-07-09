@@ -33,7 +33,7 @@ try {
     $stmt = $pdo->query($sql);
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo "<h1>Products</h1>";
+    echo "<h1>商品一覧</h1>";
 
     if (empty($products)) {
         echo "<p>商品データがありません。</p>";
@@ -74,7 +74,6 @@ try {
 
         echo "</table>";
     }
-
 } catch (PDOException $e) {
     echo $e->getMessage();
 }

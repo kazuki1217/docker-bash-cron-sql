@@ -8,6 +8,8 @@ set +a
 # logger.sh を読み込む
 . /scripts/logger.sh
 
+log INFO "============================================================"
+
 # 出庫情報CSVのパス
 CSV_FILE="/scripts/stock_out.csv"
 
@@ -31,7 +33,7 @@ do
     fi
 
     # 在庫状況を更新
-    mysql -h mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -e "
+    mysql --default-character-set=utf8mb4 -h mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -e "
         UPDATE products
         SET
             stock = GREATEST(stock - $stock, 0)
