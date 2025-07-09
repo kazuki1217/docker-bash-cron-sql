@@ -96,4 +96,23 @@ cron で実行ログを表示するコマンド
 docker compose exec php cat /var/log/cron.log
 ```
 
+<details>
+ <summary>ログの内容</summary>
 
+ ```log
+cron is working!
+[2025-07-09 20:27:01] [INFO] 入庫情報の反映を開始
+[2025-07-09 20:27:02] [INFO] Banana の登録が完了
+[2025-07-09 20:27:02] [INFO] Orange の登録が完了
+[2025-07-09 20:27:02] [INFO] Broccoli の登録が完了
+[2025-07-09 20:27:02] [INFO] CSVファイルを空にしました: /scripts/stock_in.csv
+[2025-07-09 20:27:02] [INFO] 入庫情報の反映を終了
+[2025-07-09 20:27:06] [INFO] 出庫情報の反映を開始
+[2025-07-09 20:27:06] [INFO] Broccoli の在庫数を更新
+[2025-07-09 20:27:07] [INFO] Banana の在庫数を更新
+[2025-07-09 20:27:07] [INFO] CSVファイルを空にしました: /scripts/stock_out.csv
+[2025-07-09 20:27:07] [INFO] 出庫情報の反映を終了
+[2025-07-09 20:27:11] [INFO] CSVレポート作成完了: /scripts/stock_report.csv
+```
+
+</details>

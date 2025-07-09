@@ -12,6 +12,7 @@ services:
       - ./php/crontab:/etc/cron.d/my-cron # cron の設定ファイルを配置
       - ./.env:/etc/.env # cron が使う環境変数を配置
     environment:
+      TZ: Asia/Tokyo # タイムゾーンをJSTに設定
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}

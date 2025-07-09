@@ -5,15 +5,18 @@
 # ps aux | grep cron
 # cat /var/log/cron.log
 
+# タイムゾーンをJSTに設定
+TZ=Asia/Tokyo
+
 # 動作確認用
 * * * * * root echo "cron is working!" >> /var/log/cron.log
 
 # 毎分、入庫情報をDBに反映
-* * * * * root . /etc/.env && /scripts/stock_in_import.sh >> /var/log/cron.log 2>&1
+* * * * * root /scripts/stock_in_import.sh >> /var/log/cron.log 2>&1
 
 # 毎分、出庫情報をDBに反映
-* * * * * root sleep 5 && . /etc/.env && /scripts/stock_out_update.sh >> /var/log/cron.log 2>&1
+* * * * * root sleep 5 && /scripts/stock_out_update.sh >> /var/log/cron.log 2>&1
 
 # 毎分、在庫状況をCSVファイルに出力
-* * * * * root sleep 10 && . /etc/.env && /scripts/stock_report.sh >> /var/log/cron.log 2>&1
+* * * * * root sleep 10 && /scripts/stock_report.sh >> /var/log/cron.log 2>&1
 

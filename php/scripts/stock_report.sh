@@ -5,6 +5,9 @@ set -a
 . /etc/.env 
 set +a
 
+# logger.sh を読み込む
+. /scripts/logger.sh
+
 # 在庫状況CSVのパス
 REPORT_FILE="/scripts/stock_report.csv"
 
@@ -30,4 +33,4 @@ mysql -h mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -B -N -e "
     ORDER BY p.id;
 " >> $REPORT_FILE
 
-echo "[INFO] CSVレポート作成完了: $REPORT_FILE"
+log INFO "CSVレポート作成完了: $REPORT_FILE"
