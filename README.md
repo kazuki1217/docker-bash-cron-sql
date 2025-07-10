@@ -66,8 +66,16 @@ MYSQL_PASSWORD=password" > .env
 docker-compose up -d
 ```
 
-以下URLにアクセスして、DBの内容が取得できれば成功です。
+以下URLにアクセスして、商品一覧画面が表示されると成功です。
 - http://localhost:8080/index.php
+
+<details>
+ <summary>商品一覧画面のスクリーンショット</summary>
+
+![スクリーンショット 2025-07-10 104932](https://github.com/user-attachments/assets/cfe1ed98-90f9-495e-9b5a-65f73e942ace)
+
+</details>
+
 
 <br><br>
 
