@@ -33,12 +33,22 @@ try {
     $stmt = $pdo->query($sql);
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    echo '<!DOCTYPE html>';
+    echo '<html lang="ja">';
+    echo '<head>';
+    echo '<meta charset="UTF-8">';
+    echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+    echo '<title>商品一覧</title>';
+    echo '<link rel="stylesheet" href="/style.css">';
+    echo '</head>';
+    echo '<body>';
+
     echo "<h1>商品一覧</h1>";
 
     if (empty($products)) {
         echo "<p>商品データがありません。</p>";
     } else {
-        echo "<table border='1' cellspacing='0' cellpadding='5'>";
+        echo "<table>";
         echo "<tr>
                 <th>ID</th>
                 <th>商品名</th>
@@ -55,6 +65,7 @@ try {
             $category = $row['category_name'] ?? '未分類';
             $priceFormatted = number_format($row['price'], 2);
             $discontinued = $row['discontinued'] ? '廃番' : '-';
+            $discontinuedClass = $row['discontinued'] ? 'discontinued' : 'discontinued inactive';
             $discontinuedAt = $row['discontinued_at'] ?? '-';
             $createdAt = $row['created_at'] ?? '-';
             $updatedAt = $row['updated_at'] ?? '-';
@@ -62,18 +73,21 @@ try {
             echo "<tr>
                     <td>{$row['id']}</td>
                     <td>{$row['name']}</td>
-                    <td>¥{$priceFormatted}</td>
+                    <td class='price'>¥{$priceFormatted}</td>
                     <td>{$row['stock']}</td>
                     <td>{$category}</td>
                     <td>{$createdAt}</td>
                     <td>{$updatedAt}</td>
-                    <td>{$discontinued}</td>
+                    <td class='{$discontinuedClass}'>{$discontinued}</td>
                     <td>{$discontinuedAt}</td>
                   </tr>";
         }
 
         echo "</table>";
     }
+
+    echo '</body>';
+    echo '</html>';
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
